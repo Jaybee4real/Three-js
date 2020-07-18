@@ -1,77 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Demo Car Website</title>
-    <style>
-        *{
-            margin: 0;
-            padding: 0;
-        }
-    </style>
-</head>
-<body>
+    <link href="css/styles.css" rel="stylesheet" />
+  </head>
+  <body>
+    <section class="section-1">
+      <div class="navbar">
+        <a class="logo">Motors4U</a>
+        <nav class="nav">
+          <a href="about.html" class="about">About</a>
+          <a href="about.html" class="about">Cars</a>
+          <a href="about.html" class="about">Services</a>
+          <a href="about.html" class="about">Blog</a>
+          <a href="about.html" class="about">Contact</a>
+        </nav>
+      </div>
+      <div class="heading">
+        <div class="heading-text">
+          <h2>Find Your Car</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus
+            pariatur eligendi labore, libero culpa veritatis delectus. Id odio
+            excepturi, repellat porro, doloremque labore soluta nulla sunt
+            reprehenderit illo dolorum perspiciatis!
+          </p>
+          <div class="buttons">
+            <div class="">Find Now</div>
+            <div class="">Check Later</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    
+
+    <section class="section-3 car-section"></section>
     <script src="js/three.min.js"></script>
     <script src="./js/GLTFLoader.js"></script>
     <script src="./js/OrbitControls.js"></script>
-    <script>
-        let scene, camera, renderer, controls;
-
-        function init(){
-            scene = new THREE.Scene
-            scene.background = new THREE.Color(0xdddddd)
-
-            camera = new THREE.PerspectiveCamera(40, window.innerWidth/window.innerHeight,1,5000)
-            camera.rotation.y = 45/180*Math.PI;
-            camera.position.x = 700;
-            camera.position.y = 60;
-            camera.position.z = 1000;
-
-            controls = new THREE.OrbitControls(camera, document.body)
-            controls.addEventListener("change", renderer)
-
-            bglight = new THREE.AmbientLight(0x404040,100)
-
-            directionalLight = new THREE.DirectionalLight(0xffffff,90)
-            directionalLight.position.set(0,1,0)
-            directionalLight.castShadow = true;
-            scene.add(directionalLight)
-
-            
-            pointLight1 = new THREE.PointLight(0xffffff,2);
-            pointLight1.position.set(1000,-100,-600)
-            
-            pointLight2 = new THREE.PointLight(0xfc4a03,10);
-            pointLight2.position.set(500,100,0)
-
-            pointLight3 = new THREE.PointLight(0xfcba03,10);
-            pointLight3.position.set(-500,300,500)
-            
-            scene.add(bglight, pointLight1)
-
-            renderer = new THREE.WebGLRenderer({antialias: true})
-            renderer.setSize(window.innerWidth, window.innerHeight)
-            document.body.appendChild(renderer.domElement)
-             
-
-            let loader = new THREE.GLTFLoader();
-            loader.load('scene.gltf', function(gltf){
-                car = gltf.scene.children[0];
-                car.scale.set(200.7, 200.7, 200.7);
-                scene.add(gltf.scene)
-                update()
-            })
-        } 
-
-        function update(){
-            renderer.render(scene,camera)
-            requestAnimationFrame(update)
-        }
-
-        init()
-    </script>
-</body>
+    <script src="js/index.js"></script>
+  </body>
 </html>
