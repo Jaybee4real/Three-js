@@ -143,4 +143,55 @@ a {
 .section-1 .logo {
   font-size: 1.3rem;
 }
+
+.section-2 {
+  height: 100vh;
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-top: 10%;
+}
+
+.section-2 .left-side {
+  width: 43%;
+}
+
+.section-2 .right-side {
+  width: 57%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 0 10%;
+}
+
+.section-2 .right-side h2 {
+  text-align: left;
+  font-family: montserrat, sans-serif;
+  font-size: 2rem;
+  margin-bottom: 1.3rem;
+}
+
+.section-2 .right-side p {
+  line-height: 2;
+  font-family: montserrat, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
+.section-2 .right-side .btn {
+  width: 10rem;
+  background-color: black;
+  color: white;
+  border: 2px solid black;
+  padding: 0.5rem 0;
+  text-align: center;
+  font-family: montserrat, sans-serif;
+  margin-top: 1.2rem;
+  cursor: pointer;
+}
 /*# sourceMappingURL=styles.css.map */
