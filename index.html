@@ -16,8 +16,9 @@
     
     <script src="js/three.min.js"></script>
     <script src="./js/GLTFLoader.js"></script>
+    <script src="./js/OrbitControls.js"></script>
     <script>
-        let scene, camera, renderer;
+        let scene, camera, renderer, controls;
 
         function init(){
             scene = new THREE.Scene
@@ -29,8 +30,27 @@
             camera.position.y = 60;
             camera.position.z = 1000;
 
+            controls = new THREE.OrbitControls(camera, document.body)
+            controls.addEventListener("change", renderer)
+
             bglight = new THREE.AmbientLight(0x404040,100)
-            scene.add(bglight)
+
+            directionalLight = new THREE.DirectionalLight(0xffffff,90)
+            directionalLight.position.set(0,1,0)
+            directionalLight.castShadow = true;
+            scene.add(directionalLight)
+
+            
+            pointLight1 = new THREE.PointLight(0xffffff,2);
+            pointLight1.position.set(1000,-100,-600)
+            
+            pointLight2 = new THREE.PointLight(0xfc4a03,10);
+            pointLight2.position.set(500,100,0)
+
+            pointLight3 = new THREE.PointLight(0xfcba03,10);
+            pointLight3.position.set(-500,300,500)
+            
+            scene.add(bglight, pointLight1)
 
             renderer = new THREE.WebGLRenderer({antialias: true})
             renderer.setSize(window.innerWidth, window.innerHeight)
@@ -42,9 +62,14 @@
                 car = gltf.scene.children[0];
                 car.scale.set(200.7, 200.7, 200.7);
                 scene.add(gltf.scene)
-                renderer.render(scene,camera)
+                update()
             })
         } 
+
+        function update(){
+            renderer.render(scene,camera)
+            requestAnimationFrame(update)
+        }
 
         init()
     </script>
