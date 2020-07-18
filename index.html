@@ -23,8 +23,11 @@
             scene = new THREE.Scene
             scene.background = new THREE.Color(0xdddddd)
 
-            camera = new THREE.PerspectiveCamera(40, window.innerWidth/window.innerHeight, 1, 5000)
-
+            camera = new THREE.PerspectiveCamera(40, window.innerWidth/window.innerHeight,1,5000)
+            camera.rotation.y = 45/180*Math.PI;
+            camera.position.x = 700;
+            camera.position.y = 60;
+            camera.position.z = 1000;
 
             bglight = new THREE.AmbientLight(0x404040,100)
             scene.add(bglight)
@@ -36,6 +39,8 @@
 
             let loader = new THREE.GLTFLoader();
             loader.load('scene.gltf', function(gltf){
+                car = gltf.scene.children[0];
+                car.scale.set(200.7, 200.7, 200.7);
                 scene.add(gltf.scene)
                 renderer.render(scene,camera)
             })
